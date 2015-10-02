@@ -11,6 +11,16 @@ public class GreetingController {
     private static final String template = "Привет, %s!";
     private final AtomicLong counter = new AtomicLong();
 
+    /**
+     * http://localhost:8080/
+     *
+     * @return GREAT, Application started! :)
+     */
+    @RequestMapping("/")
+    public String index() {
+        return "GREAT, Application started! :)";
+    }
+
     @RequestMapping("/greeting")
     public Greeting greeting(@RequestParam(value = "name", defaultValue = "World") String name) {
         return new Greeting(counter.incrementAndGet(), String.format(template, name));
